@@ -4,7 +4,7 @@
   gather_facts: False
 
   tasks:
-  - name: ansible-tower-ec2
+  - name: Create EC2
     ec2_instance:
       key_name: "{{ lookup('aws_ssm', '/JJTech/{{ team }}/keyname', region='us-east-1') }}"
       security_group: "{{ lookup('aws_ssm', '/JJTech/{{ team }}/{{ security_group }}', region='us-east-1') }}"
@@ -35,7 +35,7 @@
         service httpd start
         chkconfig httpd on
         echo "<html><body><h1>Hello JJTech Team</h1></body></html>" > /var/www/html/index.html
-
+        
 #  - debug:
 #      msg: ec2_instance
 #  - debug:
